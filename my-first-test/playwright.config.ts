@@ -3,6 +3,10 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
 
+  // failed-demo.spec.ts нь trace-ийн дасгалд зориулж САНААТАЙГААР унадаг тест.
+  // docs/login-fail-trace.zip нь түүнээс гарсан. Ердийн ажиллагаанаас хасав.
+  testIgnore: '**/failed-demo.spec.ts',
+
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
