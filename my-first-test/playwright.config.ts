@@ -12,6 +12,9 @@ export default defineConfig({
   use: {
     trace: 'on-first-retry',
 
+    // Тест ажиллаж байгааг видео болгож бичнэ (test-results/<тест>/video.webm).
+    video: 'on',
+
     // SauceDemo нь data-testid-ийн оронд data-test гэж нэрлэдэг тул
     // getByTestId-г түүн дээр ажиллахаар тохируулав.
     testIdAttribute: 'data-test',
