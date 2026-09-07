@@ -30,14 +30,18 @@ Playwright-ээр [SauceDemo](https://www.saucedemo.com) демо дэлгүүр
 XPath нь DOM-ийн бүтцэд баригддаг, уншихад хэцүү, хэрэглэгчийн туршлагыг шалгадаггүй тул хэрэглээгүй. Тохируулгад хоёр зүйл гараар нэмэх шаардлагатай болсон: `getByTestId` ажиллахын тулд
 `testIdAttribute: 'data-test'` (SauceDemo нь `data-testid` биш `data-test` хэрэглэдэг), бичлэг авахын тулд `video: 'on'` — `--video` гэсэн CLI флаг байдаггүй учраас config-оос тохируулна. 
 
-Санаатай унадаг тест бичиж trace viewer-ээр мөшгив: `element(s) not found` гэсэн
-мессеж нь "локатор буруу" ба "элемент үнэхээр байхгүй" гэсэн хоёр өөр шалтгааныг
-зааглаж чаддаггүй, зөвхөн trace дээрх DOM snapshot нь хэлж өгдөг
-([`docs/login-fail-trace.zip`](docs/login-fail-trace.zip) —
-[`docs/login-pass-trace.zip`](docs/login-pass-trace.zip)-тай харьцуулж үзнэ). 
+Санаатайгаар унадаг 4 тест ([`tests/failed-demo.spec.ts`](tests/failed-demo.spec.ts),
+config-ийн `testIgnore`-оор ердийн ажиллагаанаас хасагдсан) бичиж trace viewer-ээр
+мөшгихөд `element(s) not found` гэсэн **яг ижил** мессеж нь "локатор буруу"
+([`docs/fail-locator-not-found-trace.zip`](docs/fail-locator-not-found-trace.zip))
+ба "элемент үнэхээр байхгүй"
+([`docs/fail-element-missing-trace.zip`](docs/fail-element-missing-trace.zip)) гэсэн
+хоёр өөр шалтгааныг зааглаж чаддаггүй, зөвхөн trace дээрх DOM snapshot нь хэлж
+өгдөг ([`docs/login-pass-trace.zip`](docs/login-pass-trace.zip) нь амжилттай
+ажиллагааны trace). 
 
 Үр дүн: 4 тест × 3 хөтөч = **12 passed**, унасан тест байхгүй; HTML тайлан, 12
-видео, 2 trace-ыг [`docs/`](docs/) фолдерт хадгалсан, учир нь Playwright-ийн
+видео, 3 trace-ыг [`docs/`](docs/) фолдерт хадгалсан, учир нь Playwright-ийн
 `playwright-report/` ба `test-results/` хоёр `.gitignore`-д байдаг тул git тэднийг
 хадгалахгүй.
 
@@ -47,7 +51,7 @@ npx playwright test                  # 12 тест, 3 хөтөч
 npx playwright test --ui             # интерактив
 npx playwright show-report           # HTML тайлан
 npx playwright show-report docs/report   # хадгалсан тайлан
-npx playwright show-trace docs/login-fail-trace.zip
+npx playwright show-trace docs/fail-locator-not-found-trace.zip
 ```
 
 ## Playwright ба Selenium-ийн ялгаа — өөрийн ажиглалт
