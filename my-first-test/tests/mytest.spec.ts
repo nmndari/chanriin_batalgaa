@@ -34,7 +34,7 @@ test('амжилттай нэвтрэх', async ({ page }) => {
   // Нэг шалгалт хийвэл хуурамч "passed" гарах эрсдэлтэй тул 4 өнцгөөс баталгаажуулав.
   await expect(page).toHaveURL(/inventory\.html/);        // хаяг сольсон эсэх
   await expect(page.getByText('Products')).toBeVisible(); // текст харагдаж байгаа эсэх
-  await expect(page.getByTestId('title')).toHaveText('Бараанууд'); // гарчиг яг таарах эсэх
+  await expect(page.getByTestId('title')).toHaveText('Products'); // гарчиг яг таарах эсэх
   await expect(page.getByTestId('inventory-item')).toHaveCount(6); // 6 бараа ачаалагдсан эсэх
 });
 
